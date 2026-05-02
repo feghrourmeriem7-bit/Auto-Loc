@@ -1,8 +1,7 @@
-# 🚗 Auto-Loc - Plateforme de Location de Véhicules
+# Auto-Loc - Plateforme de Location de voitures
 
-Bienvenue sur le code source de **Auto-Loc** ! Ce projet a été réalisé par **[Ton Prénom Nom]** et **[Prénom Nom de ton binôme]** dans le cadre de notre projet "Build & Ship" (Architecture Cloud). 
+Dans le cadre de **Projet de Fin de Module : "Build & Ship" - Architecture Cloud & Vibe Programming**, on a développées une platforme de location de voiture **Auto-Loc** réaliser par **Bouzena Imane** , **Feghrour Meryem** et **Mouloud Zoubida** 
 
-Notre objectif ici a été d'utiliser le "Vibe Coding" pour prototyper rapidement une application fonctionnelle et la déployer dans le Cloud.
 
 ---
 
