@@ -24,17 +24,31 @@ export function useCars() {
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchCars = useCallback(async () => {
+  const fetchCars = useCallback(async (filters = {}) => {
     setLoading(true);
     try {
-      // NOTE: In Supabase table, rename `price_per_day` to `price` when possible.
-      const { data, error } = await supabase
-        .from('cars')
-        .select('*')
-        .order('id', { ascending: false });
+      let query = supabase.from('cars').select('*');
+
+      if (filters.city && filters.city !== 'Toutes') {
+        query = query.eq('city', filters.city);
+      }
+      
+      if (filters.search) {
+        query = query.ilike('brand', `%${filters.search}%`);
+      }
+
+      if (filters.available !== undefined && filters.available !== null) {
+        query = query.eq('available', filters.available);
+      }
+
+      const { data, error } = await query.order('id', { ascending: false });
+      
       if (error) throw error;
+      
       const normalized = (data || []).map(normalizeCar);
-      setCars(normalized.length ? normalized : seedCars);
+      const hasFilters = (filters.city && filters.city !== 'Toutes') || filters.search || (filters.available !== undefined && filters.available !== null);
+      
+      setCars(normalized.length > 0 ? normalized : (hasFilters ? [] : seedCars));
     } catch (err) {
       console.error('fetchCars failed', err);
       setCars(seedCars);

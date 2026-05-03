@@ -6,6 +6,7 @@ import CarCard from '../components/CarCard';
 import { useFavorites } from '../hooks/useFavorites';
 import { useAuth } from '../hooks/useAuth';
 import { useCars } from '../hooks/useCars';
+import { cities as staticCities, brands as staticBrands } from '../data/cars';
 
 export default function Cars() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export default function Cars() {
 
   const [selectedCity, setSelectedCity] = useState(initialCity);
   const [selectedBrands, setSelectedBrands] = useState([]);
-  const [priceRange, setPriceRange] = useState([0, 1500]);
+  const [priceRange, setPriceRange] = useState([0, 50000]);
   const [sortBy, setSortBy] = useState('default');
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
@@ -24,8 +25,8 @@ export default function Cars() {
 
   const { toggleFavorite, isFavorite } = useFavorites();
   const { isAuthenticated } = useAuth();
-  const cities = useMemo(() => ['Toutes', ...new Set(cars.map((c) => c.city))], [cars]);
-  const brands = useMemo(() => [...new Set(cars.map((c) => c.brand))], [cars]);
+  const cities = staticCities;
+  const brands = staticBrands;
 
   const toggleBrand = (brand) => {
     setSelectedBrands(prev =>
@@ -88,7 +89,7 @@ export default function Cars() {
   const clearFilters = () => {
     setSelectedCity('Toutes');
     setSelectedBrands([]);
-    setPriceRange([0, 1500]);
+    setPriceRange([0, 50000]);
     setSortBy('default');
     setSearchQuery('');
     setShowAvailableOnly(false);
@@ -97,7 +98,7 @@ export default function Cars() {
   const activeFilterCount = [
     selectedCity !== 'Toutes',
     selectedBrands.length > 0,
-    priceRange[0] > 0 || priceRange[1] < 1500,
+    priceRange[0] > 0 || priceRange[1] < 50000,
     showAvailableOnly
   ].filter(Boolean).length;
 
@@ -249,8 +250,8 @@ export default function Cars() {
                     <input
                       type="range"
                       min={0}
-                      max={1500}
-                      step={50}
+                      max={50000}
+                      step={1000}
                       value={priceRange[1]}
                       onChange={(e) => setPriceRange([0, parseInt(e.target.value)])}
                       className="w-full accent-primary-500 mb-4"
