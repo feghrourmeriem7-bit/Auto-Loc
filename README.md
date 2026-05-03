@@ -24,7 +24,7 @@ Notre projet **Auto-Loc consiste** à développer une plateforme de location de 
  ## 2.1 Pourquoi l'utilisation de Vercel + Supabase est financièrement plus logique pour lancer ce projet qu'un serveur classique:
    Vercel et Supabase est le choix idéale pour lancer ce projet car tout d'abord on paie ce qu'on utilise seulement et ça illustre le fait OPEX on dépense régulièrement selon l'état d'avancement de projet. C'est ce qu'on a vu dans le cours sur les objectifs business du SI : privilégier l'efficacité opérationnelle et réduire les pertes. 
    
-   Par contre si on achète un serveur classique on dépense de l'argent une fois  pour acheter du matériels (climatisation, onduleur, sécurité...) sans savoir si le projet va réussir ou non c'est ce qu'on n'appelle du CAPEX. Et pour un projet comme Auto-Loc, le choix du OPEX est le meilleure choix économique et flexible.
+  En revanche, si on achète un serveur classique on dépense de l'argent une fois  pour acheter du matériels (climatisation, onduleur, sécurité...) sans savoir si le projet va réussir ou non c'est ce qu'on n'appelle du CAPEX. Et pour un projet comme Auto-Loc, le choix du OPEX est le meilleure choix économique et flexible.
 
    
   ## 2.2 Gestion de la scalabilité: Vercel VS Data Center physique local :
