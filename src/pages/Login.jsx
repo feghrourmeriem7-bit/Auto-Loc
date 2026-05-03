@@ -28,15 +28,22 @@ export default function Login() {
     try {
       setIsLoading(true);
       setError('');
+
+      // Détecter l'environnement : local ou production
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const redirectUrl = isLocalhost 
+        ? window.location.origin // Généralement http://localhost:5173
+        : 'https://auto-loc.vercel.app';
+
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: window.location.origin
+          redirectTo: redirectUrl
         }
       });
       if (error) throw error;
     } catch (err) {
-      setError(err.message || 'Erreur lors de la connexion avec Google');
+      setError(err.message || 'Erreur lors de la connexion avec Google. Veuillez réessayer.');
       setIsLoading(false);
     }
   };
