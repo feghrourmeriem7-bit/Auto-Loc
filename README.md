@@ -14,7 +14,7 @@ Notre projet **Auto-Loc consiste** à développer une plateforme de location de 
 * **Table C (Reservations) :** Table de jointure entre Profiles et Cars, contenant les clés étrangères (user_id, car_id) ainsi que les informations liées à la réservation (date, statut…).
 * **Le Fichier (Storage) :** Stocke la photo du permis de conduire uploadée par le client dans Supabase Storage.
 * **Tables Supplémentaire** pour garantire un fonctionement de qualitée de la plateforme:
-  * **Tables de Favorites:** permet à un utilisateur de sauvegarder des voitures
+  * **Tables de Favorites:** permet à un utilisateur de sauvegarder les voitures.
   * **Tables de notifications:** permet de gérer les messages liés aux actions de l’utilisateur.
 
 ---
