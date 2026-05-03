@@ -15,6 +15,8 @@ export default function Home() {
   const [returnDate, setReturnDate] = useState('');
   const { cars } = useCars();
   const { toggleFavorite, isFavorite } = useFavorites();
+  // Accueil toujours accessible, connecté ou non : pas de redirection vers /dashboard ou /admin.
+  // La redirection des utilisateurs déjà connectés reste gérée sur /login (et les routes protégées).
   const { isAuthenticated } = useAuth();
 
   const featuredCars = cars.filter(c => c.available).slice(0, 6);

@@ -14,36 +14,34 @@ export default function Login() {
   const location = useLocation();
 
   useEffect(() => {
-    if (user) {
-      if (user.role === 'admin') {
-        navigate('/admin', { replace: true });
-      } else {
-        const from = location.state?.from || '/dashboard';
-        navigate(from, { replace: true });
-      }
+    if (!user) return;
+    if (user.role === 'admin') {
+      navigate('/admin', { replace: true });
+      return;
     }
+    const from = location.state?.from;
+    const target =
+      from && from !== '/' ? from : '/dashboard';
+    navigate(target, { replace: true });
   }, [user, navigate, location]);
+
+  useEffect(() => {
+    const msg = location.state?.oauthError;
+    if (msg) setError(msg);
+  }, [location.state?.oauthError]);
 
   const handleGoogleLogin = async () => {
     try {
       setIsLoading(true);
-      setError('');
-
-      // Détecter l'environnement : local ou production
-      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-      const redirectUrl = isLocalhost 
-        ? window.location.origin // Généralement http://localhost:5173
-        : 'https://auto-loc.vercel.app';
-
+      // Chemin dédié : à ajouter tel quel dans Supabase → Authentication → Redirect URLs
+      const redirectTo = `${window.location.origin}/auth/callback`;
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
-        options: {
-          redirectTo: redirectUrl
-        }
+        options: { redirectTo },
       });
       if (error) throw error;
     } catch (err) {
-      setError(err.message || 'Erreur lors de la connexion avec Google. Veuillez réessayer.');
+      setError(err.message || 'Erreur avec Google');
       setIsLoading(false);
     }
   };
