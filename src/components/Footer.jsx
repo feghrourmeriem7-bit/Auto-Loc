@@ -21,7 +21,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
-              Votre partenaire de confiance pour la location de voitures en Algerie. 
+              Votre partenaire de confiance pour la location de voitures en Algérie. 
               Service premium, prix compétitifs.
             </p>
             <div className="flex items-center gap-3">
@@ -93,7 +93,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3 text-slate-400 text-sm">
                 <MapPin size={14} className="text-primary-400 mt-0.5" />
-                Alger, Algerie
+                Alger, Algérie
               </li>
             </ul>
 

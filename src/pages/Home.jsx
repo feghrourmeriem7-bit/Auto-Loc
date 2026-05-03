@@ -88,7 +88,7 @@ export default function Home() {
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 backdrop-blur-sm">
                 <Sparkles size={16} className="text-primary-400" />
                 <span className="text-primary-300 text-sm font-medium">
-                  Location de voitures premium en Algerie
+                  Location de voitures premium en Algérie
                 </span>
               </div>
             </motion.div>
@@ -301,7 +301,7 @@ export default function Home() {
               Pourquoi <span className="gradient-text">Auto-Loc</span> ?
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto">
-              Nous nous engageons a vous offrir la meilleure expérience de location en Algerie.
+              Nous nous engageons a vous offrir la meilleure expérience de location en Algérie.
             </p>
           </motion.div>
 
