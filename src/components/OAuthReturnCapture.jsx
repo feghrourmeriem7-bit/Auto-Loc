@@ -15,8 +15,10 @@ export default function OAuthReturnCapture() {
     if (pathname === '/auth/callback') return;
 
     const params = new URLSearchParams(search);
+    const hashParams = new URLSearchParams(hash.replace('#', '?'));
+    
     const hasCode = params.has('code');
-    const hasOAuthError = params.has('error');
+    const hasOAuthError = params.has('error') || hashParams.has('error');
     const hasImplicitTokens = hash && /access_token|refresh_token/.test(hash);
 
     if (!hasCode && !hasOAuthError && !hasImplicitTokens) return;
