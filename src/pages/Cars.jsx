@@ -10,7 +10,7 @@ import { cities as staticCities, brands as staticBrands } from '../data/cars';
 
 export default function Cars() {
   const navigate = useNavigate();
-  const location = useLocation();
+  const location = useLocation();//fixed 
   const [searchParams] = useSearchParams();
   const initialCity = searchParams.get('city') || 'Toutes';
 
@@ -18,7 +18,7 @@ export default function Cars() {
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 50000]);
   const [sortBy, setSortBy] = useState('default');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');//fixed know
   const [showFilters, setShowFilters] = useState(false);
   const [showAvailableOnly, setShowAvailableOnly] = useState(false);
   const { cars } = useCars();

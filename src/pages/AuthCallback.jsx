@@ -12,7 +12,7 @@ async function fetchProfileRole(userId) {
   if (error) return 'user';
   return data?.role === 'admin' ? 'admin' : 'user';
 }
-
+//i fix the error 
 function decodeOAuthErrorDescription(raw) {
   if (!raw) return '';
   try {
